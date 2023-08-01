@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:educat/elements/fonts/myText.dart';
+import 'package:educat/screens/login-signup/services/googleSignin.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ContinueGoogle extends StatelessWidget {
   double? height;
@@ -10,12 +12,14 @@ class ContinueGoogle extends StatelessWidget {
     required this.height,
     required this.width,
   }) : super(key: key);
-  void onTap() {}
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(12),
-      onTap: onTap,
+      onTap: () {
+        GoogleSignin().signInWithGoogle();
+      },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(

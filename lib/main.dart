@@ -1,11 +1,19 @@
-import 'package:educat/screens/home-pages/homePage.dart';
+import 'package:educat/screens/login-signup/services/authPage.dart';
 import 'package:educat/screens/login-signup/pages/welcomePage.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main(List<String> args) {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: WelcomePage(),
-  ));
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AuthPage(),
+    ),
+  );
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "826678515935",
+    "project_id": "educat-5da67",
+    "storage_bucket": "educat-5da67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826678515935:android:aac79a324e325d0c3e716a",
+        "android_client_info": {
+          "package_name": "com.example.educat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826678515935-tgs851pr3lqcee1vn6t4pj20p95dd9uu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR-Pah8AHPpRD2NHl4-WunKbb01jEfAv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826678515935-tgs851pr3lqcee1vn6t4pj20p95dd9uu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

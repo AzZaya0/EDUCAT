@@ -1,8 +1,7 @@
 import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/google.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
