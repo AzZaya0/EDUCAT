@@ -13,8 +13,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+
+  bool _obsecureText = true;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -60,13 +62,22 @@ class _LoginPageState extends State<LoginPage> {
                 height: Constraints.maxHeight * 0.02,
               ),
               TextBox(
-                  suffixIcon: Icon(
-                    Icons.remove_red_eye,
-                    color: kGreycolor,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _obsecureText = !_obsecureText;
+                      });
+                    },
+                    child: Icon(
+                      _obsecureText ? Icons.visibility : Icons.visibility_off,
+                      color: kGreycolor,
+                    ),
                   ),
                   text: 'Your password',
-                  obsecureText: true,
+                  obsecureText: _obsecureText,
                   controller: passController),
+
+                  
             ],
           ),
         );
