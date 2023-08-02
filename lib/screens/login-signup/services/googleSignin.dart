@@ -6,7 +6,8 @@ class GoogleSignin {
   Future signInWithGoogle() async {
     GoogleSignIn googlesignin = GoogleSignIn();
     try {
-      final GoogleSignInAccount? guser = await googlesignin.signIn();
+      final GoogleSignInAccount? guser =
+          await googlesignin.signIn().catchError((onError) => print(onError));
       if (guser == null) {
         return;
       }
