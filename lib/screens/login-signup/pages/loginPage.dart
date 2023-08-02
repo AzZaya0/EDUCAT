@@ -2,6 +2,7 @@
 
 import 'package:educat/elements/constants/constants.dart';
 import 'package:educat/elements/fonts/myText.dart';
+import 'package:educat/screens/login-signup/elements/textBox.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +13,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -34,10 +37,36 @@ class _LoginPageState extends State<LoginPage> {
                 height: Constraints.maxHeight * 0.038,
               ),
               MyText(
-                text: 'Email',
+                text: '  Email',
                 fontSize: 16,
                 color: kGreycolor,
-              )
+              ),
+              SizedBox(
+                height: Constraints.maxHeight * 0.02,
+              ),
+              TextBox(
+                  text: 'Your email',
+                  obsecureText: false,
+                  controller: emailController),
+              SizedBox(
+                height: Constraints.maxHeight * 0.038,
+              ),
+              MyText(
+                text: '  Password',
+                fontSize: 16,
+                color: kGreycolor,
+              ),
+              SizedBox(
+                height: Constraints.maxHeight * 0.02,
+              ),
+              TextBox(
+                  suffixIcon: Icon(
+                    Icons.remove_red_eye,
+                    color: kGreycolor,
+                  ),
+                  text: 'Your password',
+                  obsecureText: true,
+                  controller: passController),
             ],
           ),
         );

@@ -1,8 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
-
 import 'package:educat/elements/fonts/myText.dart';
-import 'package:educat/screens/login-signup/services/googleSignin.dart';
 
 class ContinueWith extends StatelessWidget {
   String text;
