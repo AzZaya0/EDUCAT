@@ -3,6 +3,7 @@ import 'package:educat/elements/constants/constants.dart';
 import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/continueWith.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
+import 'package:educat/screens/login-signup/elements/dontHaveAcc.dart';
 import 'package:educat/screens/login-signup/pages/loginPage.dart';
 import 'package:educat/screens/login-signup/services/googleSignin.dart';
 import 'package:flutter/material.dart';
@@ -97,6 +98,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           }),
                         );
                       },
+                      color: kGreencolor,
                       height: Constraints.maxHeight * 0.079,
                       child: MyText(
                         text: 'Login',
@@ -109,26 +111,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     height: Constraints.maxHeight * 0.02,
                   ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MyText(
-                        text: 'Don\'t have an account?',
-                        fontSize: 18,
-                        color: Colors.grey.shade600,
-                      ),
-                      InkWell(
-                        splashColor: null,
-                        onTap: () {},
-                        child: MyText(
-                          text: ' Sign up',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: kGreencolor,
-                        ),
-                      )
-                    ],
-                  )
+                  signup()
                 ],
               ),
             ),

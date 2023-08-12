@@ -1,14 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_const_constructors
-import 'package:educat/elements/constants/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'package:educat/elements/constants/constants.dart';
 
 class CustomButton extends StatelessWidget {
   void Function()? ontap;
+  Color? color;
   double height;
   Widget? child;
   CustomButton({
     Key? key,
     required this.ontap,
+    this.color,
     required this.height,
     required this.child,
   }) : super(key: key);
@@ -23,7 +26,7 @@ class CustomButton extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color:kGreencolor,
+              color: color,
             ),
             height: height,
             width: double.infinity,

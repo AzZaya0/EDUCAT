@@ -1,5 +1,4 @@
 import 'package:educat/screens/login-signup/services/authPage.dart';
-import 'package:educat/screens/login-signup/pages/welcomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
