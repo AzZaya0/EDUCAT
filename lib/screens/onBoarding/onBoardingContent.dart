@@ -5,16 +5,14 @@ import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 
 class OnboardingContent extends StatelessWidget {
-  String image, title, description, bname;
-  void Function()? onTap;
-  OnboardingContent({
-    Key? key,
-    required this.image,
-    required this.bname,
-    required this.title,
-    required this.description,
-    this.onTap,
-  }) : super(key: key);
+  String image, title, description;
+
+  OnboardingContent(
+      {Key? key,
+      required this.image,
+      required this.title,
+      required this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +45,6 @@ class OnboardingContent extends StatelessWidget {
                       fontSize: 15),
                 ),
                 Spacer(),
-                CustomButton(
-                    ontap: onTap,
-                    height: Constraints.maxHeight * 0.07,
-                    color: Colors.green,
-                    child: MyText(text: 'Next', fontSize: 20)),
               ],
             ),
           ),

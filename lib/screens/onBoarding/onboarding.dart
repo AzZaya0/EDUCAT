@@ -1,3 +1,5 @@
+import 'package:educat/elements/fonts/myText.dart';
+import 'package:educat/screens/login-signup/elements/customButton.dart';
 import 'package:educat/screens/login-signup/pages/welcomePage.dart';
 import 'package:educat/screens/onBoarding/onBoardingContent.dart';
 import 'package:educat/screens/onBoarding/onBoardingdata.dart';
@@ -36,17 +38,6 @@ class _OnboardingState extends State<Onboarding> {
               image: my_data[index].image,
               title: my_data[index].title,
               description: my_data[index].description,
-              onTap: () {
-                if (currentPage == 2) {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => WelcomePage()));
-                } else {
-                  _pageController.nextPage(
-                      duration: Duration(milliseconds: 200),
-                      curve: Curves.easeIn);
-                }
-              },
-              bname: currentPage == 2 ? 'Start Learning' : 'Next',
             )),
       ),
     );
