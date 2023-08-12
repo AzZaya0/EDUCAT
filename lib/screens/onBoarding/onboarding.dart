@@ -1,5 +1,4 @@
 import 'package:educat/screens/login-signup/pages/welcomePage.dart';
-import 'package:educat/screens/login-signup/services/authPage.dart';
 import 'package:educat/screens/onBoarding/onBoardingContent.dart';
 import 'package:educat/screens/onBoarding/onBoardingdata.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +46,7 @@ class _OnboardingState extends State<Onboarding> {
                       curve: Curves.easeIn);
                 }
               },
+              bname: currentPage == 2 ? 'Start Learning' : 'Next',
             )),
       ),
     );

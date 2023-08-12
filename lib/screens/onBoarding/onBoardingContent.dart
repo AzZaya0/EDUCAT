@@ -5,13 +5,12 @@ import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 
 class OnboardingContent extends StatelessWidget {
-  String image;
-  String title;
-  String description;
+  String image, title, description, bname;
   void Function()? onTap;
   OnboardingContent({
     Key? key,
     required this.image,
+    required this.bname,
     required this.title,
     required this.description,
     this.onTap,
