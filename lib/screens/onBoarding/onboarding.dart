@@ -53,9 +53,15 @@ class _OnboardingState extends State<Onboarding> {
                         ),
                       ),
                       CustomButton(
+                          color: Colors.green,
                           ontap: () {},
                           height: Constraints.maxHeight * 0.05,
-                          child: MyText(text: 'Next', fontSize: 18))
+                          child: MyText(
+                              text:
+                                  currentPage == 2 ? 'Start Learning' : 'Next',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 18))
                     ],
                   ),
                 )));
