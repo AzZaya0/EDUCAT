@@ -31,15 +31,24 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView.builder(
-        itemCount: my_data.length,
-        controller: _pageController,
-        itemBuilder: ((context, index) => OnboardingContent(
-              image: my_data[index].image,
-              title: my_data[index].title,
-              description: my_data[index].description,
-            )),
+        body: Container(
+      child: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              itemCount: my_data.length,
+              controller: _pageController,
+              itemBuilder: ((context, index) => OnboardingContent(
+                    image: my_data[index].image,
+                    title: my_data[index].title,
+                    description: my_data[index].description,
+                  )),
+            ),
+          ),
+
+          CustomButton(ontap: (){}, height: height, child: child)
+        ],
       ),
-    );
+    ));
   }
 }
