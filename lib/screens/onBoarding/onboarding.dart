@@ -31,24 +31,33 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-              itemCount: my_data.length,
-              controller: _pageController,
-              itemBuilder: ((context, index) => OnboardingContent(
-                    image: my_data[index].image,
-                    title: my_data[index].title,
-                    description: my_data[index].description,
-                  )),
-            ),
-          ),
-
-          CustomButton(ontap: (){}, height: height, child: child)
-        ],
-      ),
-    ));
+        body: LayoutBuilder(
+            builder: (context, Constraints) => Container(
+                  margin: EdgeInsets.only(
+                      top: Constraints.maxHeight * 0.03,
+                      left: Constraints.maxWidth * 0.03,
+                      bottom: Constraints.maxHeight * 0.04,
+                      right: Constraints.maxWidth * 0.03),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: PageView.builder(
+                          itemCount: my_data.length,
+                          controller: _pageController,
+                          itemBuilder: ((context, index) => OnboardingContent(
+                                image: my_data[index].image,
+                                title: my_data[index].title,
+                                description: my_data[index].description,
+                                height: Constraints.maxHeight * 0.6,
+                              )),
+                        ),
+                      ),
+                      CustomButton(
+                          ontap: () {},
+                          height: Constraints.maxHeight * 0.05,
+                          child: MyText(text: 'Next', fontSize: 18))
+                    ],
+                  ),
+                )));
   }
 }
