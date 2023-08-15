@@ -1,6 +1,8 @@
 import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 import 'package:educat/screens/login-signup/pages/welcomePage.dart';
+import 'package:educat/screens/login-signup/services/authPage.dart';
+import 'package:educat/screens/onBoarding/checkOnboard.dart';
 import 'package:educat/screens/onBoarding/onBoardingContent.dart';
 import 'package:educat/screens/onBoarding/onBoardingdata.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +56,19 @@ class _OnboardingState extends State<Onboarding> {
                       ),
                       CustomButton(
                           color: Colors.green,
-                          ontap: () {},
+                          ontap: () {
+                            if (currentPage == 2) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AuthPage()));
+                              CheckOnboard().saveData(true);
+                            } else {
+                              _pageController.nextPage(
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.linear);
+                            }
+                          },
                           height: Constraints.maxHeight * 0.05,
                           child: MyText(
                               text:

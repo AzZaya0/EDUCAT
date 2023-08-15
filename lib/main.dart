@@ -1,5 +1,4 @@
-
-import 'package:educat/screens/onBoarding/onboarding.dart';
+import 'package:educat/screens/onBoarding/checkOnboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +10,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Onboarding(),
+      home: CheckOnboard(),
     ),
   );
 }
