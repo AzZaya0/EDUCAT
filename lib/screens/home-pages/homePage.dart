@@ -14,16 +14,18 @@ class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        Center(
-          child: ClipRRect(
-            child: Image.network(user.photoURL!), //nothing here
-          ),
-        )
-      ],
-    )
+    return Scaffold(body: LayoutBuilder(builder: (context, Constraints) {
+      return Column(
+        children: [
+          Center(
+            child: ClipRRect(
+              child: Image.network(user.photoURL!), //nothing here
+            ),
+          )
+        ],
+      );
+    })
+
         //
         // InkWell(
         //     onTap: () {
