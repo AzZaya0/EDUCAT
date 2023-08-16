@@ -17,6 +17,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(body: LayoutBuilder(builder: (context, Constraints) {
       return Column(
         children: [
+
+          // Profile and name displaying section
           Row(
             children: [
               Center(
