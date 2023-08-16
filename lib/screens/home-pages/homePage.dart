@@ -11,22 +11,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: InkWell(
-          onTap: () {
-            FirebaseAuth.instance.signOut();
-            GoogleSignIn().signOut();
-          },
-          child: Center(
-            child: Container(
-              height: 40,
-              width: 100,
-              color: Colors.red,
-              child: Text('Signout'),
-            ),
-          )),
-    );
+        body: Column(
+      children: [
+        Center(
+          child: ClipRRect(
+            child: Image.network(user.photoURL!),
+          ),
+        )
+      ],
+    )
+        //
+        // InkWell(
+        //     onTap: () {
+        //       FirebaseAuth.instance.signOut();
+        //       GoogleSignIn().signOut();
+        //     },
+        //     child: Center(
+        //       child: Container(
+        //         height: 40,
+        //         width: 100,
+        //         color: Colors.red,
+        //         child: Text('Signout'),
+        //       ),
+        //     )),
+        );
   }
 }
