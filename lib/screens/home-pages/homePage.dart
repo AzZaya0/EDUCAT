@@ -28,6 +28,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           )
+
+          //main section
+
+
+
+          //additional course section
         ],
       );
     })
