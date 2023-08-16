@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       children: [
         Center(
           child: ClipRRect(
-            child: Image.network(user.photoURL!),
+            child: Image.network(user.photoURL!), //
           ),
         )
       ],
