@@ -17,31 +17,26 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(body: LayoutBuilder(builder: (context, Constraints) {
       return Column(
         children: [
-
           // Profile and name displaying section
-          Row(
-            children: [
-              Center(
-                child: ClipRRect(
-                  child: Image.network(user.photoURL!), //commit haha
+          Container(
+            height: Constraints.maxHeight * 0.1,
+            width: Constraints.maxWidth,
+            color: Color(00000),
+            child: Row(
+              children: [
+                Center(
+                  child: ClipRRect(
+                    child: Image.network(user.photoURL!), //commit haha
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
           //search bar section
 
-
-
-          
           //main section
 
-
-
           //additional course sections
-
-
-
-          
         ],
       );
     })
