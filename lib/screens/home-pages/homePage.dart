@@ -49,7 +49,14 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            )
+            ),
+
+            Container(
+              margin: EdgeInsets.only(left: 30, right: 30),
+              height: Constraints.maxHeight * 0.05,
+              color: Colors.blue,
+            ),
+
             //search bar section
 
             //main section
