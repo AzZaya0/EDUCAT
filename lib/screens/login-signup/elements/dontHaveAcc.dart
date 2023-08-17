@@ -3,8 +3,8 @@ import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/pages/signupPage.dart';
 import 'package:flutter/material.dart';
 
-class signup extends StatelessWidget {
-  const signup({
+class Signup extends StatelessWidget {
+  const Signup({
     super.key,
   });
 
@@ -29,7 +29,7 @@ class signup extends StatelessWidget {
             text: ' Sign up',
             fontWeight: FontWeight.w600,
             fontSize: 18,
-            color: kGreencolor,
+            color: kMainColor,
           ),
         )
       ],

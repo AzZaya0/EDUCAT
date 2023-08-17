@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: MyText(
                   text: 'Forgot your password?',
                   fontSize: 18,
-                  color: kGreencolor,
+                  color: kMainColor,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -134,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: Constraints.maxHeight * 0.03,
               ),
               CustomButton(
-                  color: kGreencolor,
+                  color: kMainColor,
                   ontap: SignIn,
                   height: Constraints.maxHeight * 0.07,
                   child: MyText(
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: Constraints.maxHeight * 0.05,
               ),
-              signup(),
+              Signup(),
             ],
           ),
         );

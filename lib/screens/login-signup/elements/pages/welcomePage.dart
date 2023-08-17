@@ -4,9 +4,11 @@ import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/continueWith.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 import 'package:educat/screens/login-signup/elements/dontHaveAcc.dart';
-import 'package:educat/screens/login-signup/pages/loginPage.dart';
+
 import 'package:educat/screens/login-signup/services/googleSignin.dart';
 import 'package:flutter/material.dart';
+
+import '../../pages/loginPage.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -94,7 +96,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return const LoginPage();
+                            return LoginPage();
                           }),
                         );
                       },

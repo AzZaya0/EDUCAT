@@ -1,9 +1,9 @@
-import 'package:educat/constants.dart';
 import 'package:educat/elements/fonts/myText.dart';
-import 'package:educat/screens/login-signup/services/googleSignin.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../elements/constants/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                       text: 'Welcome back, ${user.displayName!}',
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: kDefaultTextColor,
+                      color: kTextBoxColor,
                     ),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(14),

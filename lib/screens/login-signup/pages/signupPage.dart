@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, use_build_context_synchronously
 
 import 'package:educat/elements/constants/constants.dart';
 import 'package:educat/elements/fonts/myText.dart';
@@ -162,7 +162,7 @@ class _SignupPageState extends State<SignupPage> {
                     _agreeTerms ? signUp() : null;
                   },
                   height: Constraints.maxHeight * 0.07,
-                  color: _agreeTerms ? kGreencolor : kGreycolor,
+                  color: _agreeTerms ? kMainColor : kGreycolor,
                   child: MyText(
                     text: 'Sign up',
                     fontSize: 18,
