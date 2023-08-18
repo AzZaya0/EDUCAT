@@ -62,8 +62,10 @@ class _HomePageState extends State<HomePage> {
             //main section
 
             //additional course sections
-
+            Container(child: Column(children: [],),),
             MyText(text: 'Explore more course', fontSize: 20),
+
+
           ],
         ),
       );
