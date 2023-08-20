@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     //>>>>>>>>>>>>>>>>>>>>>>>> provider <<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+    print('build called');
     final loginnProvider = Provider.of<LoginProvider>(context, listen: false);
     return Material(
       child: LayoutBuilder(builder: (context, Constraints) {

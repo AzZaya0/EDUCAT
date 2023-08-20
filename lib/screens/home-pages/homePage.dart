@@ -2,6 +2,7 @@ import 'package:educat/elements/fonts/myText.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../elements/constants/constants.dart';
 
@@ -62,29 +63,33 @@ class _HomePageState extends State<HomePage> {
             //main section
 
             //additional course sections
-            Container(child: Column(children: [],),),
+            Container(
+              child: Column(
+                children: [],
+              ),
+            ),
             MyText(text: 'Explore more course', fontSize: 20),
 
-
+            InkWell(
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  GoogleSignIn().signOut();
+                },
+                child: Center(
+                  child: Container(
+                    height: 40,
+                    width: 100,
+                    color: Colors.red,
+                    child: Text('Signout'),
+                  ),
+                )),
           ],
         ),
       );
     })
 
         //
-        // InkWell(
-        //     onTap: () {
-        //       FirebaseAuth.instance.signOut();
-        //       GoogleSignIn().signOut();
-        //     },
-        //     child: Center(
-        //       child: Container(
-        //         height: 40,
-        //         width: 100,
-        //         color: Colors.red,
-        //         child: Text('Signout'),
-        //       ),
-        //     )),
+
         );
   }
 }
