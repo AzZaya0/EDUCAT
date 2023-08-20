@@ -21,7 +21,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
   @override
   Widget build(BuildContext context) {
     //>>>>>>>>>>>>>>>>>>>>>>>> provider <<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -69,21 +68,25 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
-              TextBox(
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _obsecureText = !_obsecureText;
-                      });
-                    },
-                    child: Icon(
-                      _obsecureText ? Icons.visibility_off : Icons.visibility,
-                      color: kGreycolor,
+
+              //>>>>>>>>>>>>>>>>>>>>>>>>>>>> Adding consumer to access provider  <<<<<<<<<<<<<<<<<<<<<<<<<<
+              Consumer<LoginProvider>(builder: ((context, value, child) {
+                return TextBox(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        value.eyeButton();
+                      },
+                      child: Icon(
+                        value.obsecure
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: kGreycolor,
+                      ),
                     ),
-                  ),
-                  text: 'Your password',
-                  obsecureText: _obsecureText,
-                  controller: loginnProvider.pass),
+                    text: 'Your password',
+                    obsecureText: value.obsecure,
+                    controller: loginnProvider.pass);
+              })),
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
