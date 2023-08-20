@@ -5,11 +5,8 @@ import 'package:educat/provider/loginProvider.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 import 'package:educat/screens/login-signup/elements/dontHaveAcc.dart';
 import 'package:educat/screens/login-signup/elements/textBox.dart';
-import 'package:educat/screens/login-signup/pages/signupPage.dart';
 import 'package:educat/screens/login-signup/services/authPage.dart';
 import 'package:educat/screens/login-signup/services/googleSignin.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
