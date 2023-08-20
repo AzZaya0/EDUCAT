@@ -1,14 +1,17 @@
 // ignore_for_file: non_constant_identifier_names, use_build_context_synchronously
 import 'package:educat/elements/constants/constants.dart';
 import 'package:educat/elements/fonts/myText.dart';
+import 'package:educat/provider/loginProvider.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 import 'package:educat/screens/login-signup/elements/dontHaveAcc.dart';
 import 'package:educat/screens/login-signup/elements/textBox.dart';
+import 'package:educat/screens/login-signup/pages/signupPage.dart';
 import 'package:educat/screens/login-signup/services/authPage.dart';
 import 'package:educat/screens/login-signup/services/googleSignin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,49 +21,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  void SignIn() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passController.text,
-      );
-      Navigator.pop(context);
-    } on FirebaseException catch (e) {
-      Navigator.pop(context);
-      showError(e.code);
-    }
-  }
-
-  void showError(String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return CupertinoAlertDialog(
-            insetAnimationDuration: const Duration(milliseconds: 200),
-            title: Center(
-              child: MyText(
-                text: message,
-                fontSize: 24,
-                color: Colors.white,
-              ),
-            ),
-          );
-        });
-  }
-
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
-
-  bool _obsecureText = true;
+  
   @override
   Widget build(BuildContext context) {
+    //>>>>>>>>>>>>>>>>>>>>>>>> provider <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    final loginnProvider = Provider.of<LoginProvider>(context, listen: false);
     return Material(
       child: LayoutBuilder(builder: (context, Constraints) {
         return Container(
@@ -91,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               TextBox(
                   text: 'Your email',
                   obsecureText: false,
-                  controller: emailController),
+                  controller: loginnProvider.email),
               SizedBox(
                 height: Constraints.maxHeight * 0.038,
               ),
@@ -117,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   text: 'Your password',
                   obsecureText: _obsecureText,
-                  controller: passController),
+                  controller: loginnProvider.pass),
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
@@ -135,7 +101,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
               CustomButton(
                   color: kMainColor,
-                  ontap: SignIn,
+                  ontap: () {
+                    loginnProvider.SignIn(context);
+                  },
                   height: Constraints.maxHeight * 0.07,
                   child: MyText(
                     text: 'Sign in',
