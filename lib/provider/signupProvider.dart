@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +20,7 @@ class SignupProvider with ChangeNotifier {
   bool get obsecure => _obsecureText;
   bool _cobsecureText = true;
   bool get cObsecure => _cobsecureText;
+
   bool _agreeTerms = false;
   bool get agree => _agreeTerms;
 
@@ -37,9 +36,15 @@ class SignupProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void agreeTerms(){
+// agree to terms and conditions
+  void agreeTerms(context) {
+    _agreeTerms ? signUp(context) : null;
+  }
+// checkbox function
 
-     _agreeTerms ? signUp(context) : null;
+  void agreeCheck(newValue) {
+    _agreeTerms = newValue!;
+    notifyListeners();
   }
 
   // sign up function

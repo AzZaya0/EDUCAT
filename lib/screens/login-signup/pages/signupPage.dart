@@ -18,6 +18,8 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     final SignuppProvider = Provider.of<SignupProvider>(context, listen: false);
+
+    print('huhuhu');
     return Scaffold(
       body: LayoutBuilder(builder: (context, Constraints) {
         return Container(
@@ -63,6 +65,7 @@ class _SignupPageState extends State<SignupPage> {
 
               //////////////////////////////////////////////////////////////////
               Consumer<SignupProvider>(builder: ((context, value, child) {
+                print('eye button tapped');
                 return TextBox(
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -96,10 +99,10 @@ class _SignupPageState extends State<SignupPage> {
                 return TextBox(
                     suffixIcon: GestureDetector(
                       onTap: () {
-                        snapshot.cObsecure;
+                        snapshot.cEyeButton();
                       },
                       child: Icon(
-                        snapshot.obsecure
+                        snapshot.cObsecure
                             ? Icons.visibility_off
                             : Icons.visibility,
                         color: kGreycolor,
@@ -113,20 +116,24 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
-              Row(
-                children: [
-                  Checkbox(
-                      value: SignuppProvider.agree,
-                      onChanged: (newValue) {
-                        SignuppProvider.agree == newValue!;
-                      })
-                ],
-              ),
+
+              Consumer(builder: ((context, snapshot, child) {
+                return Row(
+                  children: [
+                    Checkbox(
+                        value: SignuppProvider.agree,
+                        onChanged: (value) {
+                          SignuppProvider.agreeCheck(value);
+                        })
+                  ],
+                );
+              })),
+
               const Spacer(),
               Consumer<SignupProvider>(builder: ((context, value, child) {
                 return CustomButton(
                     ontap: () {
-                      value.agreeTerms();
+                      value.agreeTerms(context);
                     },
                     height: Constraints.maxHeight * 0.07,
                     color: value.agree ? kMainColor : kGreycolor,
@@ -147,5 +154,5 @@ class _SignupPageState extends State<SignupPage> {
 
 
 // setState(() {
-//                           _agreeTerms = newValue!;
+//                           
 //                         });
