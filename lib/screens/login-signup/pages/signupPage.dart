@@ -117,11 +117,11 @@ class _SignupPageState extends State<SignupPage> {
                 height: Constraints.maxHeight * 0.02,
               ),
 
-              Consumer(builder: ((context, snapshot, child) {
+              Consumer<SignupProvider>(builder: ((context, snapshot, child) {
                 return Row(
                   children: [
                     Checkbox(
-                        value: SignuppProvider.agree,
+                        value: snapshot.agree,
                         onChanged: (value) {
                           SignuppProvider.agreeCheck(value);
                         })
