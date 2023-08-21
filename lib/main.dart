@@ -1,4 +1,5 @@
 import 'package:educat/provider/loginProvider.dart';
+import 'package:educat/provider/signupProvider.dart';
 import 'package:educat/screens/onBoarding/checkOnboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ Future<void> main() async {
     providers: [
       ChangeNotifierProvider(
         create: (_) => LoginProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => SignupProvider(),
       )
     ],
     child: MaterialApp(

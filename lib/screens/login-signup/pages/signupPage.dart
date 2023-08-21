@@ -1,13 +1,11 @@
 // ignore_for_file: non_constant_identifier_names, use_build_context_synchronously
-
 import 'package:educat/elements/constants/constants.dart';
 import 'package:educat/elements/fonts/myText.dart';
 import 'package:educat/screens/login-signup/elements/customButton.dart';
 import 'package:educat/screens/login-signup/elements/textBox.dart';
-import 'package:educat/screens/login-signup/services/authPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../provider/signupProvider.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -16,51 +14,12 @@ class SignupPage extends StatefulWidget {
   State<SignupPage> createState() => _SignupPageState();
 }
 
-final emailController = TextEditingController();
-final passController = TextEditingController();
-final confirmpassController = TextEditingController();
-
-bool _obsecureText = true;
-bool _cobsecureText = true;
-bool _agreeTerms = false;
-
 class _SignupPageState extends State<SignupPage> {
-  void signUp() async {
-    if (passController.text == confirmpassController.text) {
-      try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: emailController.text, password: passController.text);
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) {
-          return AuthPage();
-        }));
-      } on FirebaseException catch (e) {
-        showError(e.code);
-      }
-    } else {
-      showError('Password doesn\'t match');
-    }
-  }
-
-  void showError(String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return CupertinoAlertDialog(
-            title: Center(
-              child: Text(
-                message,
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: LayoutBuilder(builder: (context, Constraints) {
+    final SignuppProvider = Provider.of<SignupProvider>(context, listen: false);
+    return Scaffold(
+      body: LayoutBuilder(builder: (context, Constraints) {
         return Container(
           margin: EdgeInsets.only(
               left: Constraints.maxWidth * 0.05,
@@ -71,7 +30,7 @@ class _SignupPageState extends State<SignupPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MyText(
-                text: 'Create your \n account',
+                text: 'Create your \naccount',
                 fontSize: 34,
                 fontWeight: FontWeight.w700,
               ),
@@ -89,7 +48,7 @@ class _SignupPageState extends State<SignupPage> {
               TextBox(
                   text: 'Your email',
                   obsecureText: false,
-                  controller: emailController),
+                  controller: SignuppProvider.emailControl),
               SizedBox(
                 height: Constraints.maxHeight * 0.038,
               ),
@@ -101,21 +60,26 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
-              TextBox(
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _obsecureText = !_obsecureText;
-                      });
-                    },
-                    child: Icon(
-                      _obsecureText ? Icons.visibility_off : Icons.visibility,
-                      color: kGreycolor,
+
+              //////////////////////////////////////////////////////////////////
+              Consumer<SignupProvider>(builder: ((context, value, child) {
+                return TextBox(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        value.eyeButton();
+                      },
+                      child: Icon(
+                        value.obsecure
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: kGreycolor,
+                      ),
                     ),
-                  ),
-                  text: 'Your password',
-                  obsecureText: _obsecureText,
-                  controller: passController),
+                    text: 'Your password',
+                    obsecureText: value.obsecure,
+                    controller: SignuppProvider.passControl);
+              })),
+
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
@@ -127,47 +91,51 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
-              TextBox(
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _cobsecureText = !_cobsecureText;
-                      });
-                    },
-                    child: Icon(
-                      _obsecureText ? Icons.visibility_off : Icons.visibility,
-                      color: kGreycolor,
+
+              Consumer<SignupProvider>(builder: ((context, snapshot, child) {
+                return TextBox(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        snapshot.cObsecure;
+                      },
+                      child: Icon(
+                        snapshot.obsecure
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: kGreycolor,
+                      ),
                     ),
-                  ),
-                  text: 'Your password',
-                  obsecureText: _cobsecureText,
-                  controller: confirmpassController),
+                    text: 'Your password',
+                    obsecureText: snapshot.cObsecure,
+                    controller: SignuppProvider.confirmPassControl);
+              })),
+
               SizedBox(
                 height: Constraints.maxHeight * 0.02,
               ),
               Row(
                 children: [
                   Checkbox(
-                      value: _agreeTerms,
+                      value: SignuppProvider.agree,
                       onChanged: (newValue) {
-                        setState(() {
-                          _agreeTerms = newValue!;
-                        });
+                        SignuppProvider.agree == newValue!;
                       })
                 ],
               ),
               const Spacer(),
-              CustomButton(
-                  ontap: () {
-                    _agreeTerms ? signUp() : null;
-                  },
-                  height: Constraints.maxHeight * 0.07,
-                  color: _agreeTerms ? kMainColor : kGreycolor,
-                  child: MyText(
-                    text: 'Sign up',
-                    fontSize: 18,
-                    color: Colors.white,
-                  ))
+              Consumer<SignupProvider>(builder: ((context, value, child) {
+                return CustomButton(
+                    ontap: () {
+                      value.agreeTerms();
+                    },
+                    height: Constraints.maxHeight * 0.07,
+                    color: value.agree ? kMainColor : kGreycolor,
+                    child: MyText(
+                      text: 'Sign up',
+                      fontSize: 18,
+                      color: Colors.white,
+                    ));
+              }))
             ],
           ),
         );
@@ -175,3 +143,9 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 }
+
+
+
+// setState(() {
+//                           _agreeTerms = newValue!;
+//                         });

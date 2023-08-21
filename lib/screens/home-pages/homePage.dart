@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       return SafeArea(
         child: Column(
           children: [
-            // Profile and name displaying section
+            // Profile and name displaying section 
             Container(
               height: Constraints.maxHeight * 0.2,
               width: Constraints.maxWidth,
